@@ -16,12 +16,14 @@ class Home extends React.Component {
       this.setState({ playTitle: "" });
     }
   }
+
   handleSubmit() {
     alert("A title was submitted: " + this.state.playTitle);
     if (localStorage === null) console.log("its empty");
     else console.log("its loaded");
-    <Default 
+    // <Default />
   }
+  
   render() {
     return (
       <div className="homePage">
