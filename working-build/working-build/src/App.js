@@ -8,6 +8,7 @@ import FavoritesBar from "./Components/FavoritesBar";
 import About from "./About";
 import Header from "./Components/Header";
 import SinglePlay from "./Components/Default/SinglePlay";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,7 @@ class App extends React.Component {
       singlePlay: [],
     };
   }
+  
   componentDidMount() {
     if (localStorage.getItem.length <= 1) {
       fetch(
@@ -50,8 +52,10 @@ class App extends React.Component {
       console.log("Plays are loaded in storage!");
     }
   }
+  
   render() {
     var { error, isLoaded, items } = this.state;
+    
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -59,6 +63,7 @@ class App extends React.Component {
     } else {
       localStorage.setItem("plays", items);
     }
+    
     return (
       <div className="container">
         <Header />
@@ -83,6 +88,7 @@ class App extends React.Component {
       </div>
     );
   }
+
   onUpdateTitle(userTitle) {
     this.setState({ title: userTitle });
     const singlePlayIndex = this.state.items.findIndex(
