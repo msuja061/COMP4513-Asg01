@@ -1,12 +1,11 @@
 import React from "react";
 
-const playDetails = props => {
+const PlayDetails = (props) => {
+  return (
+    <div>
+      <h1>Play Details</h1>
+    </div>
+  );
+};
 
-    return (
-        <div>
-            <p>TEST HERE</p>
-        </div>
-    );
-}
-
-export default playDetails;
+export default PlayDetails;

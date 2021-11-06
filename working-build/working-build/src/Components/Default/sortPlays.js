@@ -1,2 +1,8 @@
-function sortPlays() {}
-export default sortPlays;
+function SortPlays() {
+  return (
+    <section>
+      <form></form>
+    </section>
+  );
+}
+export default SortPlays;
