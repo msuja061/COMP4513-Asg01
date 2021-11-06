@@ -1,2 +1,2 @@
-function favoritesBar() {}
-export default favoritesBar;
+function FavoritesBar() {}
+export default FavoritesBar;
