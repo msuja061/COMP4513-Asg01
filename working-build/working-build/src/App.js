@@ -6,6 +6,7 @@ import PlayDetails from "./Components/Details/PlayDetails";
 import DefaultView from "./Components/Default/DefaultView";
 import FavoritesBar from "./Components/FavoritesBar";
 import Header from "./Components/Header";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,7 @@ class App extends React.Component {
       title: "",
     };
   }
+  
   componentDidMount() {
     if (localStorage.getItem("plays") === "") {
       fetch(
@@ -45,8 +47,10 @@ class App extends React.Component {
       console.log("Plays are loaded in storage!");
     }
   }
+  
   render() {
     var { error, isLoaded, items } = this.state;
+    
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -54,6 +58,7 @@ class App extends React.Component {
     } else {
       localStorage.setItem("plays", items);
     }
+    
     return (
       <div className="container">
         <Header />
@@ -75,6 +80,7 @@ class App extends React.Component {
       </div>
     );
   }
+  
   onUpdate(userTitle) {
     this.setState({ title: userTitle });
   }
