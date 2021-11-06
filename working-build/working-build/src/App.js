@@ -1,6 +1,10 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Home/Home";
+import PlayDetails from "./Components/Details/PlayDetails";
+import FavoritesBar from "./Components/FavoritesBar";
+import Header from "./Components/Header";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +15,7 @@ class App extends React.Component {
       items: [],
     };
   }
+  
   componentDidMount() {
     if (localStorage.getItem("plays") === "") {
       fetch(
@@ -40,6 +45,7 @@ class App extends React.Component {
       console.log("Plays are loaded in storage!");
     }
   }
+
   render() {
     var { error, isLoaded, items } = this.state;
     if (error) {
