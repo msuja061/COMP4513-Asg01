@@ -1,2 +1,2 @@
-function listOfPlays() {}
-export default listOfPlays;
+function ListOfPlays() {}
+export default ListOfPlays;

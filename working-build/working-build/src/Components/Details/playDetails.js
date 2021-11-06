@@ -3,7 +3,7 @@ import React from "react";
 const PlayDetails = (props) => {
   return (
     <div>
-      <p>TEST HERE</p>
+      <h1>Play Details</h1>
     </div>
   );
 };
