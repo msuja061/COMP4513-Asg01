@@ -25,10 +25,6 @@ export function FavoritesContextProvider(props) {
   function playIsFavoritesHandler(playId) { //Helper function, may not need it
     return favoritesList.some(play => play.id === playId);
   }
-
-  function blank() {
-    
-  }
   
   const context = {
     favorites: favoritesList,
