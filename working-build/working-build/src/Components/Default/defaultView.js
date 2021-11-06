@@ -1,14 +1,23 @@
 import React from "react";
-
+import SortPlays from "./SortPlays";
 function DefaultView(props) {
   return (
     <div>
-      <h1>Default View</h1>
-      <h2>{props.title}</h2>
+      <SortPlays />
+      <button>Title</button>
+      <button>Year</button>
       <ul>
-        {props.plays.map((item) => (
-          <li key={item.id}>{item.title}</li>
-        ))}
+        {props.plays.map((plays) => {
+          return (
+            <li>
+              <h2>Title: {plays.title}</h2>
+              <div>Released: {plays.likelyDate}</div>
+              <div>Genre: {plays.genre}</div>
+              <button>Add to Favorites</button>
+              <button>View</button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

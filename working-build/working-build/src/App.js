@@ -5,7 +5,9 @@ import Home from "./Components/Home/Home";
 import PlayDetails from "./Components/Details/PlayDetails";
 import DefaultView from "./Components/Default/DefaultView";
 import FavoritesBar from "./Components/FavoritesBar";
+import About from "./About";
 import Header from "./Components/Header";
+import SinglePlay from "./Components/Default/SinglePlay";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,17 +17,20 @@ class App extends React.Component {
       isLoaded: false,
       items: [],
       title: "",
+      singlePlay: [],
     };
   }
   
   componentDidMount() {
-    if (localStorage.getItem("plays") === "") {
+    if (localStorage.getItem.length <= 1) {
       fetch(
         "https://www.randyconnolly.com//funwebdev/3rd/api/shakespeare/list.php"
       )
         .then((res) => res.json())
         .then(
           (result) => {
+            result.sort((a, b) => a.title.localeCompare(b.title));
+
             console.log(result);
 
             this.setState({
@@ -65,24 +70,32 @@ class App extends React.Component {
         <Routes>
           <Route
             path="/"
-            element={<Home onUpdate={this.onUpdate.bind(this)} />}
+            element={<Home onUpdateTitle={this.onUpdateTitle.bind(this)} />}
             exact
           ></Route>
           <Route
             path="/default"
-            element={
-              <DefaultView plays={this.state.items} title={this.state.title} />
-            }
+            element={<DefaultView plays={this.state.items} />}
+          ></Route>
+          <Route
+            path="/singlePlay"
+            element={<SinglePlay single={this.state.singlePlay} />}
           ></Route>
           <Route path="/details" element={<PlayDetails />}></Route>
           <Route path="/favorites" element={<FavoritesBar />}></Route>
+          <Route path="/about" element={<About />}></Route>
         </Routes>
       </div>
     );
   }
-  
-  onUpdate(userTitle) {
+
+  onUpdateTitle(userTitle) {
     this.setState({ title: userTitle });
+    const singlePlayIndex = this.state.items.findIndex(
+      (p) => p.title.toLowerCase() === userTitle
+    );
+    this.setState({ singlePlay: this.state.items[singlePlayIndex] });
+    return singlePlayIndex;
   }
 }
 

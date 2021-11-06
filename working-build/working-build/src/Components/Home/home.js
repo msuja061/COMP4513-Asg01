@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SinglePlay from "../Default/SinglePlay";
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,7 @@ class Home extends React.Component {
   }
   handleChange(event) {
     if (event.target.value !== "") {
-      this.props.onUpdate(event.target.value.toLowerCase());
+      this.props.onUpdateTitle(event.target.value.toLowerCase());
     }
   }
 
@@ -31,11 +32,13 @@ class Home extends React.Component {
             name="title"
             onChange={this.handleChange.bind(this)}
           />
-          <Link to="/default">
+          <Link to="/singlePlay">
             <input type="button" value="Find this Play" />
           </Link>
         </label>
-        <input type="submit" value="Show me all plays" />
+        <Link to="/default">
+          <input type="submit" value="Show me all plays" />
+        </Link>
       </div>
     );
   }

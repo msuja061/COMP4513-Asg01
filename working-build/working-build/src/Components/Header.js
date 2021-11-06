@@ -17,6 +17,9 @@ function Header() {
           <li>
             <Link to="/favorites">Favorites</Link>
           </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
         </ul>
       </nav>
     </header>
