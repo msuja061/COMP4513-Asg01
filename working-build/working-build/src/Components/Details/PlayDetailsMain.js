@@ -1,0 +1,63 @@
+import React from "react";
+import PlayDetails from "./PlayDetails"
+import PlayCharacters from "./PlayCharacters";
+import PlayText from "./PlayText";
+
+const PlayDetailsMain = (props) => {
+  //Testing vars. Change when view play is set up
+  const json = localStorage.getItem("plays"); 
+  const testPlays = JSON.parse(json);
+  const testPlay = testPlays[0];
+  let playDetails;
+  const localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
+
+  if (localPlaysDetails.some(play => play.title === testPlay.title)) { //Checks if play's details are already in local storage
+    console.log("Already in local storage!");
+    playDetails = localPlaysDetails.find(play => play.title === testPlay.title);
+    console.log(playDetails);
+  } else if (testPlay.filename !== "") { //If not checks if the play does have additional details
+    fetch("https://www.randyconnolly.com//funwebdev/3rd/api/shakespeare/play.php?name=" + testPlay.id)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+          let testResult = JSON.stringify(result);
+          localStorage.setItem("playsDetails", testResult);
+        },
+        (error) => { alert("Error fetching data"); }
+      );
+  } else {
+    console.log("Play does not contain characters and text!");
+  }
+
+  const [detailsToShow, setDetailsToShow] = React.useState("details");
+
+  const whatToRender = () => {
+    if (detailsToShow === "characters") {
+      return playDetails.persona.map( (p) => <PlayCharacters player={p.player} /> );
+    } else if (detailsToShow === "text") {
+      return playDetails.acts.map( (p) => <PlayText play={p} /> );
+    } else {
+      return <PlayDetails play={ testPlay }></PlayDetails>
+    }
+  }
+    
+    return (
+      <div>
+        <div>
+          <h1>{testPlay.title}</h1>
+          <h2>{testPlay.synopsis}</h2>
+        </div>
+        <div>
+          <button onClick={() => setDetailsToShow("details")}>Details</button>
+          <button onClick={() => setDetailsToShow("characters")}>Characters</button>
+          <button onClick={() => setDetailsToShow("text")}>Text</button>
+          <div>
+            {whatToRender()}
+          </div>
+        </div>
+      </div>
+    );
+};
+
+export default PlayDetailsMain;

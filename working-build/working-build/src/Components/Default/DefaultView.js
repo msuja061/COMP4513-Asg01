@@ -1,6 +1,8 @@
 import React from "react";
 import SortPlays from "./SortPlays";
+
 function DefaultView(props) {
+
   return (
     <div>
       <SortPlays />
