@@ -52,9 +52,9 @@ const PlayDetailsMain = (props) => {
           <button onClick={() => setDetailsToShow("details")}>Details</button>
           <button onClick={() => setDetailsToShow("characters")}>Characters</button>
           <button onClick={() => setDetailsToShow("text")}>Text</button>
-          <section class="playTextSection">
+          <div>
             {whatToRender()}
-          </section>
+          </div>
         </div>
       </div>
     );

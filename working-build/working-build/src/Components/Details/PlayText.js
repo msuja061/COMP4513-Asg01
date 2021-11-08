@@ -36,10 +36,16 @@ const PlayText = (props) => {
   }
 
   return (
+    <section class="playTextSection">
+      <aside>
+        <select id="actList"></select>
+      </aside>
+
       <article id="actHere">
         <h3>{ props.play.name }</h3>
         {props.play.scenes.map( (s) => scene(s) )}
       </article>
+    </section>
   );
 }
 
