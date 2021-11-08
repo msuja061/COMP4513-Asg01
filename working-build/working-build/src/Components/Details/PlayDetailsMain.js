@@ -5,8 +5,7 @@ import PlayText from "./PlayText";
 
 const PlayDetailsMain = (props) => {
   //Testing vars. Change when view play is set up
-  const json = localStorage.getItem("plays"); 
-  const testPlays = JSON.parse(json);
+  const testPlays = JSON.parse(localStorage.getItem("plays"));
   const testPlay = testPlays[0];
   let playDetails;
   const localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
@@ -27,7 +26,7 @@ const PlayDetailsMain = (props) => {
         (error) => { alert("Error fetching data"); }
       );
   } else {
-    console.log("Play does not contain characters and text!");
+    console.log("Play does not contain characters and text!"); //Add error handler for clickign characters or text!!!!!!
   }
 
   const [detailsToShow, setDetailsToShow] = React.useState("details");

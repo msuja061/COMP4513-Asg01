@@ -28,10 +28,10 @@ const PlayText = (props) => {
   }
 
   return (
-    <div>
-      <h3>{ props.play.name }</h3>
-      <h4>{props.play.scenes.map( (s) => scene(s) )}</h4>
-    </div>
+    <section>
+      <h2>{ props.play.name }</h2>
+      {props.play.scenes.map( (s) => scene(s) )}
+    </section>
   );
 }
 
