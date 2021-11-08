@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { FavoritesContextProvider } from "./store/favorites-context";
 import Home from "./Components/Home/Home";
 import PlayDetails from "./Components/Details/PlayDetails";
 import DefaultView from "./Components/Default/DefaultView";
@@ -20,7 +21,7 @@ class App extends React.Component {
       singlePlay: [],
     };
   }
-  
+
   componentDidMount() {
     if (localStorage.getItem.length <= 1) {
       fetch(
@@ -52,10 +53,10 @@ class App extends React.Component {
       console.log("Plays are loaded in storage!");
     }
   }
-  
+
   render() {
     var { error, isLoaded, items } = this.state;
-    
+
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -63,7 +64,7 @@ class App extends React.Component {
     } else {
       localStorage.setItem("plays", items);
     }
-    
+
     return (
       <div className="container">
         <Header />
@@ -77,10 +78,12 @@ class App extends React.Component {
             path="/default"
             element={<DefaultView plays={this.state.items} />}
           ></Route>
+
           <Route
             path="/singlePlay"
             element={<SinglePlay single={this.state.singlePlay} />}
           ></Route>
+
           <Route path="/details" element={<PlayDetails />}></Route>
           <Route path="/favorites" element={<FavoritesBar />}></Route>
           <Route path="/about" element={<About />}></Route>

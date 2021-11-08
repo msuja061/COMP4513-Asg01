@@ -1,45 +1,46 @@
-import { createContext, useState } from "react";
+import { Children, createContext, useState } from "react";
 
 const FavoritesContext = createContext({
   favorites: [],
-  addFavoriteHandler: (favoriteClicked) => {},
-  deleteFavoriteHandler: (playId) => {},
-  playIsFavoritesHandler  : (playId) => {}
+  addFavorite: (favoriteClicked) => {},
+  deleteFavorite: (playId) => {},
+  playIsFavorite: (playId) => {},
 });
 
 export function FavoritesContextProvider(props) {
   const [favoritesList, setFavoritesList] = useState([]);
 
   function addFavoriteHandler(favoriteClicked) {
-    setFavoritesList(prevFavoritesList => {
+    setFavoritesList((prevFavoritesList) => {
       return prevFavoritesList.concat(favoriteClicked);
     });
   }
 
   function deleteFavoriteHandler(playId) {
-    setFavoritesList(prevFavoritesList => {
-      return prevFavoritesList.filter(play => play.id !== playId);
-    })
+    setFavoritesList((prevFavoritesList) => {
+      return prevFavoritesList.filter((p) => p.id !== playId);
+    });
   }
 
-  function playIsFavoritesHandler(playId) { //Helper function, may not need it
-    return favoritesList.some(play => play.id === playId);
+  function playIsFavoritesHandler(playId) {
+    //Helper function, may not need it
+    return favoritesList.some((p) => p.id === playId);
   }
 
-  function blank() {
-    
-  }
-  
+  function blank() {}
+
   const context = {
     favorites: favoritesList,
-    addFavoriteHandler: addFavoriteHandler,
-    deleteFavoriteHandler: deleteFavoriteHandler,
-    playIsFavoritesHandler: playIsFavoritesHandler
+    addFavorite: addFavoriteHandler,
+    deleteFavorite: deleteFavoriteHandler,
+    playIsFavorite: playIsFavoritesHandler,
   };
 
-  return <FavoritesContext.Provider value={context}>
-    {props.childern}
-  </FavoritesContext.Provider>
+  return (
+    <FavoritesContext.Provider value={context}>
+      {props.children}
+    </FavoritesContext.Provider>
+  );
 }
 
 export default FavoritesContext;
