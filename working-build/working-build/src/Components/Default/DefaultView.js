@@ -1,25 +1,33 @@
 import React from "react";
+import { useContext } from "react";
+import FavoritesContext from "../../store/favorites-context";
 import SortPlays from "./SortPlays";
-function DefaultView(props) {
-  let listedItem = props.plays;
+import ListOfPlays from "./ListOfPlays";
 
+function DefaultView(props) {
+
+
+  /**
+  const favContext = useContext(FavoritesContext);
+  const playIsFav = favContext.playIsFavorite(props.plays.id);
+
+  function toggleFavoriteStatus(event) {
+    console.log(event);
+    if (playIsFav) {
+      favContext.deleteFavorite(props.plays.id);
+    } else {
+      favContext.addFavorite(props.plays.id);
+    }
+  }
+*/
   return (
     <div>
-      <SortPlays plays={props.plays}/>
-      <ul>
-        {listedItem.map((plays) => {
-          return (
-            <li>
-              <h2>Title: {plays.title}</h2>
-              <div>Released: {plays.likelyDate}</div>
-              <div>Genre: {plays.genre}</div>
-              <button>Add to Favorites</button>
-              <button>View</button>
-            </li>
-          );
-        })}
-      </ul>
+      
+      <SortPlays plays={props.plays} key={props.plays.id}></SortPlays>
     </div>
   );
 }
 export default DefaultView;
+
+{/* <button>Title</button>
+      <button>Year</button> */}
