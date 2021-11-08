@@ -85,7 +85,7 @@ class App extends React.Component {
             element={<SinglePlay single={this.state.singlePlay} />}
           ></Route>
 
-          <Route path="/details" element={<PlayDetails />}></Route>
+          <Route path="/details" element={<PlayDetailsMain />}></Route>
 
           <Route path="/favorites" element={<FavoritesBar />}></Route>
           <Route path="/about" element={<About />}></Route>
