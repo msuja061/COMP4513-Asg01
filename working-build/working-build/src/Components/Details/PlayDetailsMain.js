@@ -2,6 +2,7 @@ import React from "react";
 import PlayDetails from "./PlayDetails"
 import PlayCharacters from "./PlayCharacters";
 import PlayText from "./PlayText";
+import "./playText.css";
 
 const PlayDetailsMain = (props) => {
   //Testing vars. Change when view play is set up
@@ -51,9 +52,9 @@ const PlayDetailsMain = (props) => {
           <button onClick={() => setDetailsToShow("details")}>Details</button>
           <button onClick={() => setDetailsToShow("characters")}>Characters</button>
           <button onClick={() => setDetailsToShow("text")}>Text</button>
-          <div>
+          <section class="playTextSection">
             {whatToRender()}
-          </div>
+          </section>
         </div>
       </div>
     );
