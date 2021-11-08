@@ -1,13 +1,13 @@
 import React from "react";
 import SortPlays from "./SortPlays";
 function DefaultView(props) {
+  let listedItem = props.plays;
+
   return (
     <div>
-      <SortPlays />
-      <button>Title</button>
-      <button>Year</button>
+      <SortPlays plays={props.plays}/>
       <ul>
-        {props.plays.map((plays) => {
+        {listedItem.map((plays) => {
           return (
             <li>
               <h2>Title: {plays.title}</h2>
