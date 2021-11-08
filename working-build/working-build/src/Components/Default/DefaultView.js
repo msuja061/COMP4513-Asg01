@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import FavoritesContext from "../../store/favorites-context";
 import SortPlays from "./SortPlays";
+
 import ListOfPlays from "./ListOfPlays";
 
 function DefaultView(props) {
@@ -16,6 +17,7 @@ function DefaultView(props) {
       favContext.addFavorite(props.plays.id);
     }
   }
+
   return (
     <div>
       <SortPlays />

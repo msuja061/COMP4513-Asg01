@@ -27,8 +27,6 @@ export function FavoritesContextProvider(props) {
     return favoritesList.some((p) => p.id === playId);
   }
 
-  function blank() {}
-
   const context = {
     favorites: favoritesList,
     addFavorite: addFavoriteHandler,

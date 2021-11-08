@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { FavoritesContextProvider } from "./store/favorites-context";
 import Home from "./Components/Home/Home";
-import PlayDetails from "./Components/Details/PlayDetails";
+import PlayDetailsMain from "./Components/Details/PlayDetailsMain";
 import DefaultView from "./Components/Default/DefaultView";
 import FavoritesBar from "./Components/FavoritesBar";
 import About from "./About";
@@ -38,7 +38,8 @@ class App extends React.Component {
               isLoaded: true,
               items: result,
             });
-            localStorage.setItem("plays", result);
+            let testResult = JSON.stringify(result);
+            localStorage.setItem("plays", testResult);
           },
 
           (error) => {
@@ -85,6 +86,7 @@ class App extends React.Component {
           ></Route>
 
           <Route path="/details" element={<PlayDetails />}></Route>
+
           <Route path="/favorites" element={<FavoritesBar />}></Route>
           <Route path="/about" element={<About />}></Route>
         </Routes>
