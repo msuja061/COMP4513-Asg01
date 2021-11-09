@@ -9,6 +9,7 @@ const SortPlays = (props) => {
   let endYear = 0;
   let yearCond = "between";
   const [howToSort, setHowToSort] = React.useState("title");
+  const [filter, setFilter] = React.useState([]);
 
   const sortChange = (event) =>{
     if (event.target.value === "title") {
@@ -100,25 +101,28 @@ const SortPlays = (props) => {
   const filterYearChange = () => {
     if (yearCond === "between") {
       console.log("filterYearChange; between...");
-      const betweenYears = props.plays.filter((a) => a.likelyDate >= startYear && a.likelyDate <= endYear);
+      const betweenYears = props.plays.filter((a) => a.likelyDate >= startYear && a.likelyDate <= endYear).map(filteredYear => tempList.push(filteredYear));
       // props.plays.filter((a) => a.likelyDate >= startYear && a.likelyDate <= endYear).map(filteredYear => tempList.push(filteredYear));
       list = betweenYears;
       console.log("Printing filtered list: ");
-      console.log(list);
+      // console.log(betweenYears);
+      console.log(tempList);
     } else if (yearCond === "after") {
       console.log("filterYearChange; after...");
-      const afterYear = props.plays.filter((a) => a.likelyDate >= startYear);
+      const afterYear = props.plays.filter((a) => a.likelyDate >= startYear).map(filteredYear => tempList.push(filteredYear));
       // props.plays.filter((a) => a.likelyDate >= startYear).map(filteredYear => tempList.push(filteredYear));
       list = afterYear;
       console.log("Printing filtered list: ");
+      // console.log(afterYear);
       console.log(tempList);
     } else if (yearCond === "before") {
       console.log("filterYearChange; before...");
-      const beforeYear = props.plays.filter((a) => a.likelyDate <= endYear);
+      const beforeYear = props.plays.filter((a) => a.likelyDate <= endYear).map(filteredYear => tempList.push(filteredYear));
       // props.plays.filter((a) => a.likelyDate <= endYear).map(filteredYear => tempList.push(filteredYear));
       list = beforeYear;
       console.log("Printing filtered list: ");
-      console.log(list);
+      // console.log(beforeYear);
+      console.log(tempList);
     }
   } 
 
