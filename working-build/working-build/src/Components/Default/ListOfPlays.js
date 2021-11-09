@@ -18,10 +18,12 @@ const ListOfPlays = (props) => {
     }
   }
   let playClicked = "";
+  
   function handleViewClick(event) {
     setviewDetails(true);
     playClicked = props.aPlay;
-    <PlayDetailsMain thePlay={playClicked} />;
+    props.showDetail(props.aPlay);
+    // <PlayDetailsMain thePlay={playClicked} />;
   }
   console.log(playClicked);
 
@@ -33,10 +35,13 @@ const ListOfPlays = (props) => {
       <button onClick={toggleFavoriteStatus}>
         {playIsFav ? "Remove from Favorites" : "Add to Favorites"}
       </button>
-
+      
+      <Link to="/details">
       <button onClick={handleViewClick}>View</button>
+      </Link>
 
-      {viewDetails ? <PlayDetailsMain thePlay={props.aPlay} /> : null}
+
+      {/* {viewDetails ? <PlayDetailsMain thePlay={props.aPlay} /> : null} */}
     </li>
   );
 };

@@ -6,24 +6,25 @@ import "./playText.css";
 
 const PlayDetailsMain = (props) => {
   //Testing vars. Change when view play is set up
-  console.log(props.thePlay);
-  const testPlays = JSON.parse(localStorage.getItem("plays"));
-  const testPlay = props.thePlay;
+  console.log("Play passed into detail!");
+  console.log(props.playClicked);
+  // const testPlays = JSON.parse(localStorage.getItem("plays"));
+  // const testPlay = props.thePlay;
   let playDetails;
   const localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
 
-  if (localPlaysDetails.some((play) => play.title === testPlay.title)) {
+  if (localPlaysDetails.some((play) => play.title === props.playClicked.title)) {
     //Checks if play's details are already in local storage
     console.log("Already in local storage!");
     playDetails = localPlaysDetails.find(
-      (play) => play.title === testPlay.title
+      (play) => play.title === props.playClicked.title
     );
     console.log(playDetails);
-  } else if (testPlay.filename !== "") {
+  } else if (props.playClicked.filename !== "") {
     //If not checks if the play does have additional details
     fetch(
       "https://www.randyconnolly.com//funwebdev/3rd/api/shakespeare/play.php?name=" +
-        testPlay.id
+      props.playClicked.id
     )
       .then((res) => res.json())
       .then(
@@ -50,16 +51,16 @@ const PlayDetailsMain = (props) => {
     } else if (detailsToShow === "text") {
       return playDetails.acts.map((p) => <PlayText play={p} />);
     } else {
-      return <PlayDetails play={testPlay}></PlayDetails>;
+      return <PlayDetails play={props.playClicked}></PlayDetails>;
     }
   };
 
   return (
     <div>
-      <div>
-        <h1>{testPlay.title}</h1>
-        <h2>{testPlay.synopsis}</h2>
-      </div>
+      <aside>
+        <h1>{props.playClicked.title}</h1>
+        <h2>{props.playClicked.synopsis}</h2>
+      </aside>
       <div>
         <button onClick={() => setDetailsToShow("details")}>Details</button>
         <button onClick={() => setDetailsToShow("characters")}>
