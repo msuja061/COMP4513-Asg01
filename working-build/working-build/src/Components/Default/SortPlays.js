@@ -5,6 +5,9 @@ import React from "react";
 const SortPlays = (props) => {
   let list = props.plays;
   let tempList = props.plays;
+  let startYear = 0;
+  let endYear = 0;
+  let yearCond = "between";
   const [howToSort, setHowToSort] = React.useState("title");
 
   const sortChange = (event) =>{
@@ -48,8 +51,8 @@ const SortPlays = (props) => {
     console.log("Year changed...");
     console.log(event.target.value);
     console.log(event.target.name);
-    let startYear=0;
-    let endYear=0;
+    // let startYear=0;
+    // let endYear=0;
     
     if(event.target.name === "start" && event.target.value !== "") {
       startYear = event.target.value;
@@ -60,43 +63,63 @@ const SortPlays = (props) => {
     }
     
     if(startYear !== 0 && endYear !== 0){
-      const betweenYears = props.plays.filter((a) => a.likelyDate >= startYear && a.likelyDate <= endYear);
-      list = betweenYears;
+      // const betweenYears = props.plays.filter((a) => a.likelyDate >= startYear && a.likelyDate <= endYear);
+      // list = betweenYears;
       // tempList = betweenYears;
-      setHowToSort("between");
-
+      yearCond = "between";
+      howToSort("between");
+      // filterYearChange("between", startYear, endYear);
     } 
     else if(startYear !== 0 && endYear === 0){
-      const afterYear = props.plays.filter((a) => a.likelyDate >= startYear);
-      list = afterYear;
+      // const afterYear = props.plays.filter((a) => a.likelyDate >= startYear);
+      // list = afterYear;
       // tempList = afterYear;
+      yearCond = "after";
       setHowToSort("after");
+      // filterYearChange("after", startYear, endYear);
     }
     else if(startYear === 0 && endYear !== 0){
-      const beforeYear = props.plays.filter((a) => a.likelyDate <= endYear);
-      list = beforeYear;
+      // const beforeYear = props.plays.filter((a) => a.likelyDate <= endYear);
+      // list = beforeYear;
       // tempList = beforeYear;
+      yearCond = "before";
       setHowToSort("before");
+      // filterYearChange("before", startYear, endYear);
     }
     else{
-      list = props.plays;
-      // tempList = props.plays;
+      // list = props.plays;
+      tempList = props.plays;
     }
 
-    console.log("Printing filtered list: ");
+    // console.log("Printing filtered list: ");
     // console.log(tempList);
-    console.log(list);
 
     // return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
   }
 
-  const filterByYear = () => {
-    console.log("filter by year");
-    console.log(props.plays);
-    const yearFilter = props.plays.filter((play) => play.likelyDate.includes(props.filter));
-    console.log("Printing only years: ");
-    console.log(yearFilter);
-    list = yearFilter;
+  const filterYearChange = () => {
+    if (yearCond === "between") {
+      console.log("filterYearChange; between...");
+      const betweenYears = props.plays.filter((a) => a.likelyDate >= startYear && a.likelyDate <= endYear);
+      // props.plays.filter((a) => a.likelyDate >= startYear && a.likelyDate <= endYear).map(filteredYear => tempList.push(filteredYear));
+      list = betweenYears;
+      console.log("Printing filtered list: ");
+      console.log(list);
+    } else if (yearCond === "after") {
+      console.log("filterYearChange; after...");
+      const afterYear = props.plays.filter((a) => a.likelyDate >= startYear);
+      // props.plays.filter((a) => a.likelyDate >= startYear).map(filteredYear => tempList.push(filteredYear));
+      list = afterYear;
+      console.log("Printing filtered list: ");
+      console.log(tempList);
+    } else if (yearCond === "before") {
+      console.log("filterYearChange; before...");
+      const beforeYear = props.plays.filter((a) => a.likelyDate <= endYear);
+      // props.plays.filter((a) => a.likelyDate <= endYear).map(filteredYear => tempList.push(filteredYear));
+      list = beforeYear;
+      console.log("Printing filtered list: ");
+      console.log(list);
+    }
   } 
 
   function genList() {
@@ -111,11 +134,13 @@ const SortPlays = (props) => {
       sortByGenre();
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
     } else if (howToSort === "between") {
+      filterYearChange();
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
-      return tempList.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
     } else if (howToSort === "after") {
+      filterYearChange();
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
     } else if (howToSort === "before") {
+      filterYearChange();
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
     } else {
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
