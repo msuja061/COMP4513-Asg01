@@ -86,7 +86,6 @@ class App extends React.Component {
           ></Route>
 
           <Route path="/details" element={<PlayDetailsMain />}></Route>
-
           <Route path="/favorites" element={<FavoritesBar />}></Route>
           <Route path="/about" element={<About />}></Route>
         </Routes>
