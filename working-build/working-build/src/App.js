@@ -19,6 +19,7 @@ class App extends React.Component {
       items: [],
       title: "",
       singlePlay: [],
+      detailPlay: [],
     };
   }
 
@@ -85,7 +86,10 @@ class App extends React.Component {
             element={<SinglePlay single={this.state.singlePlay} />}
           ></Route>
 
-          <Route path="/details" element={<PlayDetailsMain />}></Route>
+          <Route
+            path="/details"
+            element={<PlayDetailsMain aPlay={this.state.detailPlay} />}
+          ></Route>
           <Route path="/favorites" element={<FavoritesBar />}></Route>
           <Route path="/about" element={<About />}></Route>
         </Routes>

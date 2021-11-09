@@ -18,8 +18,19 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="homePage">
+      <div
+        className="block"
+        style={{
+          marginTop: "25%",
+          marginLeft: "25%",
+          width: "50%",
+          border: "3px solid green",
+          padding: "10px",
+          borderRadius: "1em",
+        }}
+      >
         <img
+          className="hero"
           src="https://unsplash.com/photos/3ZUsNJhi_Ik?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"
           alt="hero"
         />
@@ -27,16 +38,25 @@ class Home extends React.Component {
         <label>
           Title
           <input
+            className="input is-primary"
             type="text"
             name="title"
             onChange={this.handleChange.bind(this)}
           />
           <Link to="/singlePlay">
-            <input type="button" value="Find this Play" />
+            <input
+              className="input is-primary"
+              type="button"
+              value="Find this Play"
+            />
           </Link>
         </label>
         <Link to="/default">
-          <input type="submit" value="Show me all plays" />
+          <input
+            className="input is-primary"
+            type="submit"
+            value="Show me all plays"
+          />
         </Link>
       </div>
     );

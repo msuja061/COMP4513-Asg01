@@ -10,13 +10,13 @@ function FavoritesBar() {
     content = <p>You Favorite List is Empty. Not a Shakes fan, eh?</p>;
   } else {
     content = favContext.favorites.map((plays) => {
-      return <ListOfPlays aPlay={plays} key={plays.id} />;
+      return <ListOfPlays aPlay={plays} key={plays.id} fav={true} />;
     });
   }
 
   return (
-    <section>
-      <h1>My Favorites</h1>
+    <section className="columns is-multiline is-mobile">
+      <p className="title column is-full">My Favorites</p>
       {content}
     </section>
   );

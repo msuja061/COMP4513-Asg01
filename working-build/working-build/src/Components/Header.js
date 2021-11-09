@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import Slider from "react-slide-out";
 import "react-slide-out/lib/index.css";
-import { render } from "react-dom";
 import FavoritesBar from "./FavoritesBar";
 
 class Header extends React.Component {
@@ -13,30 +12,59 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header>
-        <div>Shakes Plays</div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
+      <nav
+        className="navbar is-primary is-fixed-top is-spaced"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <div className="navbar-item">
+            <Link to="/">Home</Link>
+          </div>
+          <button
+            role="button"
+            className="navbar-burger"
+            data-target="navMenu"
+            aria-label="menu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-start">
+            <div className="navbar-item">
               <Link to="/default">Default View</Link>
-            </li>
-            <li>
+            </div>
+
+            <div className="navbar-item">
               <Link to="/details">Play Details</Link>
-            </li>
-            <li>
+            </div>
+          </div>
+          <div className="navbar-end">
+            <div className="navbar-item">
               <Link to="/about">About Us</Link>
-            </li>
-            <li>
-              <button onClick={() => this.setState({ isOpen: true })}>
+            </div>
+
+            <div className="navbar-item">
+              <button
+                className="button is-light"
+                onClick={() => this.setState({ isOpen: true })}
+              >
                 My Favorites
               </button>
+            </div>
+
+            <div className="navbar-item">
               <Slider
                 footer={
-                  <div style={{ padding: "15px" }}>
-                    <button onClick={() => this.setState({ isOpen: false })}>
+                  <div className="buttons" style={{ padding: "15px" }}>
+                    <button
+                      className="button is-dark"
+                      onClick={() => this.setState({ isOpen: false })}
+                    >
                       Close
                     </button>
                   </div>
@@ -46,10 +74,10 @@ class Header extends React.Component {
               >
                 <FavoritesBar />
               </Slider>
-            </li>
-          </ul>
-        </nav>
-      </header>
+            </div>
+          </div>
+        </div>
+      </nav>
     );
   }
 }
