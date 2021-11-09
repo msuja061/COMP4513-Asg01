@@ -3,6 +3,7 @@ import { useContext } from "react";
 import FavoritesContext from "../../store/favorites-context";
 import SortPlays from "./SortPlays";
 import ListOfPlays from "./ListOfPlays";
+import PlayDetailsMain from "../Details/PlayDetailsMain";
 
 function DefaultView(props) {
   /**
@@ -18,9 +19,10 @@ function DefaultView(props) {
     }
   }
 */
+
   return (
     <div>
-      <SortPlays plays={props.plays} key={props.plays.id}></SortPlays>
+      <SortPlays plays={props.plays} key={props.plays.id} showDetail={props.showDetail}></SortPlays>
     </div>
   );
 }

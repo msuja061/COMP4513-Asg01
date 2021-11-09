@@ -1,0 +1,32 @@
+.playTextSection {
+  padding: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  overflow: auto;
+  height: 700px
+}
+p.title {
+  font-weight: 600; 
+  margin: 0;
+}
+p.direction {
+  margin: 0;
+  font-style: italic;
+  font-weight: 500; 
+}
+.speech span {
+  display: block;
+  margin-top: 12px;
+  font-weight: 700;
+}
+.speech p {
+  margin: 0;
+}
+.speech p b {
+  background-color: yellow;
+}
+.speech em {
+  font-style: italic;
+  display: block;
+  margin-top: 12px;
+}

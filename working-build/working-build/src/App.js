@@ -19,6 +19,7 @@ class App extends React.Component {
       items: [],
       title: "",
       singlePlay: [],
+      playClicked: [],
     };
   }
 
@@ -55,6 +56,8 @@ class App extends React.Component {
     }
   }
 
+  
+
   render() {
     var { error, isLoaded, items } = this.state;
 
@@ -65,6 +68,10 @@ class App extends React.Component {
     } else {
       localStorage.setItem("plays", items);
     }
+
+    const showDetail = (play) => {
+        this.setState({ playClicked: play });
+      }
 
     return (
       <div className="container">
@@ -77,7 +84,7 @@ class App extends React.Component {
           ></Route>
           <Route
             path="/default"
-            element={<DefaultView plays={this.state.items} />}
+            element={<DefaultView plays={this.state.items} showDetail={showDetail}/>}
           ></Route>
 
           <Route
@@ -85,7 +92,7 @@ class App extends React.Component {
             element={<SinglePlay single={this.state.singlePlay} />}
           ></Route>
 
-          <Route path="/details" element={<PlayDetailsMain />}></Route>
+          <Route path="/details" element={<PlayDetailsMain playClicked={this.state.playClicked}/>}></Route>
           <Route path="/favorites" element={<FavoritesBar />}></Route>
           <Route path="/about" element={<About />}></Route>
         </Routes>

@@ -51,15 +51,15 @@ const SortPlays = (props) => {
   function genList() {
     if (howToSort === "title") {
       sortByTitle();
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     } else if (howToSort === "year") {
       SortByDate();
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     } else if (howToSort === "genre") {
       sortByGenre();
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     } else {
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     }
   }
 
