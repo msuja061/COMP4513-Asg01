@@ -1,7 +1,11 @@
+import React from "react";
 import { useContext } from "react";
 import FavoritesContext from "../../store/favorites-context";
+import PlayDetailsMain from "../Details/PlayDetailsMain";
 
-function SinglePlay(props) {
+const SinglePlay = (props) => {
+  const [viewDetails, setviewDetails] = React.useState(false);
+  const [viewSingle, setViewSingle] = React.useState(true);
   const favContext = useContext(FavoritesContext);
   const playIsFav = favContext.playIsFavorite(props.single.id);
 
@@ -13,7 +17,10 @@ function SinglePlay(props) {
     }
   }
 
-  function viewHandler(event) {}
+  function handleViewClick(event) {
+    setViewSingle(false);
+    setviewDetails(true);
+  }
 
   return (
     <div>
@@ -23,8 +30,9 @@ function SinglePlay(props) {
       <button onClick={toggleFavoriteStatus}>
         {playIsFav ? "Remove from Favorites" : "Add to Favorites"}
       </button>
-      <button onClick={viewHandler}>View</button>
+      <button onClick={handleViewClick}>View</button>
+      {viewDetails ? <PlayDetailsMain thePlay={props.single} /> : null}
     </div>
   );
-}
+};
 export default SinglePlay;
