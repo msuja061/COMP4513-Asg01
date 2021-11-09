@@ -9,6 +9,7 @@ import FavoritesBar from "./Components/FavoritesBar";
 import About from "./About";
 import Header from "./Components/Header";
 import SinglePlay from "./Components/Default/SinglePlay";
+import ErrorBoundary from "./Components/ErrorBoundary";
 
 class App extends React.Component {
   constructor(props) {
@@ -73,9 +74,14 @@ class App extends React.Component {
         <Routes>
           <Route
             path="/"
-            element={<Home onUpdateTitle={this.onUpdateTitle.bind(this)} />}
+            element={
+              <ErrorBoundary>
+                <Home onUpdateTitle={this.onUpdateTitle.bind(this)} />
+              </ErrorBoundary>
+            }
             exact
           ></Route>
+
           <Route
             path="/default"
             element={<DefaultView plays={this.state.items} />}
@@ -99,6 +105,7 @@ class App extends React.Component {
 
   onUpdateTitle(userTitle) {
     this.setState({ title: userTitle });
+
     const singlePlayIndex = this.state.items.findIndex(
       (p) => p.title.toLowerCase() === userTitle
     );

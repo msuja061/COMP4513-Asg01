@@ -48,6 +48,7 @@ class Home extends React.Component {
               className="input is-primary"
               type="button"
               value="Find this Play"
+              style={{ width: "25%", margin: "5%" }}
             />
           </Link>
         </label>
@@ -56,6 +57,7 @@ class Home extends React.Component {
             className="input is-primary"
             type="submit"
             value="Show me all plays"
+            style={{ width: "30%", margin: "5%" }}
           />
         </Link>
       </div>
