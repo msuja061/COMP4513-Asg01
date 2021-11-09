@@ -1,8 +1,12 @@
 import React from "react";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import FavoritesContext from "../../store/favorites-context";
+import PlayDetailsMain from "../Details/PlayDetailsMain";
 
-function ListOfPlays(props) {
+const ListOfPlays = (props) => {
+  const [viewDetails, setviewDetails] = React.useState(false);
+
   const favContext = useContext(FavoritesContext);
   const playIsFav = favContext.playIsFavorite(props.aPlay.id);
 
@@ -13,6 +17,13 @@ function ListOfPlays(props) {
       favContext.addFavorite(props.aPlay);
     }
   }
+  let playClicked = "";
+  function handleViewClick(event) {
+    setviewDetails(true);
+    playClicked = props.aPlay;
+    <PlayDetailsMain thePlay={playClicked} />;
+  }
+  console.log(playClicked);
 
   return (
     <li>
@@ -22,8 +33,11 @@ function ListOfPlays(props) {
       <button onClick={toggleFavoriteStatus}>
         {playIsFav ? "Remove from Favorites" : "Add to Favorites"}
       </button>
-      <button>View</button>
+
+      <button onClick={handleViewClick}>View</button>
+
+      {viewDetails ? <PlayDetailsMain thePlay={props.aPlay} /> : null}
     </li>
   );
-}
+};
 export default ListOfPlays;
