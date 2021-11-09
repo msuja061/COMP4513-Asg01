@@ -37,7 +37,7 @@ const ListOfPlays = (props) => {
       </button>
       
       <Link to="/details">
-      <button onClick={handleViewClick}>View</button>
+        <button onClick={handleViewClick}>View</button>
       </Link>
 
 

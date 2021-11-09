@@ -3,6 +3,7 @@ import PlayDetails from "./PlayDetails";
 import PlayCharacters from "./PlayCharacters";
 import PlayText from "./PlayText";
 import "./playText.css";
+import TextFilter from "./TextFilter";
 
 const PlayDetailsMain = (props) => {
   //Testing vars. Change when view play is set up
@@ -11,31 +12,32 @@ const PlayDetailsMain = (props) => {
   // const testPlays = JSON.parse(localStorage.getItem("plays"));
   // const testPlay = props.thePlay;
   let playDetails;
-  const localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
+  let localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
 
-  if (localPlaysDetails.some((play) => play.title === props.playClicked.title)) {
+  if (localPlaysDetails.some((play) => play.id === props.playClicked.id)) {
     //Checks if play's details are already in local storage
     console.log("Already in local storage!");
     playDetails = localPlaysDetails.find(
-      (play) => play.title === props.playClicked.title
+      (play) => play.id === props.playClicked.id
     );
-    console.log(playDetails);
   } else if (props.playClicked.filename !== "") {
     //If not checks if the play does have additional details
     fetch(
-      "https://www.randyconnolly.com//funwebdev/3rd/api/shakespeare/play.php?name=" +
-      props.playClicked.id
+      "https://www.randyconnolly.com//funwebdev/3rd/api/shakespeare/play.php?name=" + props.playClicked.id
     )
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result);
           let testResult = JSON.stringify(result);
           localStorage.setItem("playsDetails", testResult);
         },
         (error) => {
           alert("Error fetching data");
         }
+      );
+      localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
+      playDetails = localPlaysDetails.find(
+        (play) => play.id === props.playClicked.id
       );
   } else {
     console.log("Play does not contain characters and text!"); //Add error handler for clickign characters or text!!!!!!
@@ -59,7 +61,8 @@ const PlayDetailsMain = (props) => {
     <div>
       <aside>
         <h1>{props.playClicked.title}</h1>
-        <h2>{props.playClicked.synopsis}</h2>
+        { detailsToShow !== "text" ? <h2>{props.playClicked.synopsis}</h2> : null}
+        { detailsToShow === "text" ? <TextFilter play={playDetails} /> : null}
       </aside>
       <div>
         <button onClick={() => setDetailsToShow("details")}>Details</button>
