@@ -5,6 +5,9 @@ import PlayText from "./PlayText";
 import "./playText.css";
 import TextFilter from "./TextFilter";
 
+/**
+* Details source page, everything detail is printed here
+*/
 const PlayDetailsMain = (props) => {
   //Testing vars. Change when view play is set up
   console.log("Play passed into detail!");
