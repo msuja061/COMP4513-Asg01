@@ -1,6 +1,9 @@
 // import { render } from "react-dom";
 import './playText.css';
 
+/**
+* Prints all the scenes, speeches, lines, and acts
+*/
 const PlayText = (props) => {
 
   const scene = (s) => {
