@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 /**
-* The main starting page - home - for the application
-*/
+ * The main starting page - home - for the application
+ */
 class Home extends React.Component {
   constructor(props) {
     super(props);
