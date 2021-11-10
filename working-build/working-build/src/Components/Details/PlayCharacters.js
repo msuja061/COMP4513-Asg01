@@ -1,5 +1,8 @@
 // import { render } from "react-dom";
 
+/**
+* Prints the characters found in the play
+*/
 const PlayCharacters = (props) => {
   
   return (
