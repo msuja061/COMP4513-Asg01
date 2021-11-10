@@ -2,6 +2,9 @@ import { useContext } from "react";
 import FavoritesContext from "../store/favorites-context";
 import ListOfPlays from "./Default/ListOfPlays";
 
+/**
+* Favourites list builder; where all favourite items are stored
+*/
 function FavoritesBar() {
   const favContext = useContext(FavoritesContext);
 
