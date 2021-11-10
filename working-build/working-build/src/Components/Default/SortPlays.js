@@ -103,7 +103,7 @@ const SortPlays = (props) => {
     // return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
   }
 
-  // 
+  // Determines if years inputted is a ranged input or for years raning before/after
   const filterYearChange = () => {
     if (yearCond === "between") {
       console.log("filterYearChange; between...");
@@ -181,9 +181,6 @@ const SortPlays = (props) => {
         <ul>
           {genList()}
         </ul>
-        {/* <ul>
-          {genList2()}
-        </ul> */}
       </section>
     );
 }
