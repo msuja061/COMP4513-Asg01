@@ -23,15 +23,35 @@ const SinglePlay = (props) => {
   }
 
   return (
-    <div>
-      <h2>Title: {props.single.title}</h2>
-      <div>Released: {props.single.likelyDate}</div>
-      <div>Genre: {props.single.genre}</div>
-      <button onClick={toggleFavoriteStatus}>
-        {playIsFav ? "Remove from Favorites" : "Add to Favorites"}
-      </button>
-      <button onClick={handleViewClick}>View</button>
-      {viewDetails ? <PlayDetailsMain thePlay={props.single} /> : null}
+    <div className="column is-full">
+      <div className="card has-shadow" style={{ margin: "20%" }}>
+        <header className="card-header">
+          <p className="card-header-title is-centered title is-6">
+            {props.single.title}
+          </p>
+        </header>
+        <div className="card-content">
+          <p className="subtitle is-6">Released: {props.single.likelyDate}</p>
+          <p className="subtitle is-6">Genre: {props.single.genre}</p>
+        </div>
+        <footer className="card-footer">
+          <button
+            className="button card-footer-item is-link"
+            onClick={toggleFavoriteStatus}
+          >
+            {playIsFav ? "Remove from Favorites" : "Add to Favorites"}
+          </button>
+
+          <button
+            className=" button card-footer-item is-link"
+            onClick={handleViewClick}
+          >
+            View
+          </button>
+        </footer>
+
+        {viewDetails ? <PlayDetailsMain thePlay={props.single} /> : null}
+      </div>
     </div>
   );
 };

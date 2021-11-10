@@ -13,30 +13,61 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header>
-        <div>Shakes Plays</div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/default">Default View</Link>
-            </li>
-            <li>
-              <Link to="/details">Play Details</Link>
-            </li>
-            <li>
-              <Link to="/about">About Us</Link>
-            </li>
-            <li>
-              <button onClick={() => this.setState({ isOpen: true })}>
+      <nav
+        className="navbar is-link is-fixed-top mx-* "
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <div className="navbar-item">
+            <Link className="has-text-white ml-6" to="/">
+              Home
+            </Link>
+          </div>
+          <button
+            role="button"
+            className="navbar-burger"
+            data-target="navMenu"
+            aria-label="menu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-start">
+            <div className="navbar-item">
+              <Link className="has-text-white" to="/default">
+                Default View
+              </Link>
+            </div>
+          </div>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <Link className="has-text-white" to="/about">
+                About Us
+              </Link>
+            </div>
+
+            <div className="navbar-item">
+              <button
+                className="button is-light"
+                onClick={() => this.setState({ isOpen: true })}
+              >
                 My Favorites
               </button>
+            </div>
+
+            <div className="navbar-item mr-6">
               <Slider
                 footer={
-                  <div style={{ padding: "15px" }}>
-                    <button onClick={() => this.setState({ isOpen: false })}>
+                  <div className="buttons" style={{ padding: "15px" }}>
+                    <button
+                      className="button is-dark"
+                      onClick={() => this.setState({ isOpen: false })}
+                    >
                       Close
                     </button>
                   </div>
@@ -46,10 +77,10 @@ class Header extends React.Component {
               >
                 <FavoritesBar />
               </Slider>
-            </li>
-          </ul>
-        </nav>
-      </header>
+            </div>
+          </div>
+        </div>
+      </nav>
     );
   }
 }

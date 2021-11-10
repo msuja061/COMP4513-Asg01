@@ -7,16 +7,28 @@ function FavoritesBar() {
 
   let content;
   if (favContext.favorites.length < 1) {
-    content = <p>You Favorite List is Empty. Not a Shakes fan, eh?</p>;
+    content = (
+      <p
+        className="has-text-weight-bold"
+        style={{ color: "black", marginLeft: "5%" }}
+      >
+        Favorite List is Empty. Not a Shakes fan, eh?
+      </p>
+    );
   } else {
     content = favContext.favorites.map((plays) => {
-      return <ListOfPlays aPlay={plays} key={plays.id} />;
+      return <ListOfPlays aPlay={plays} key={plays.id} fav={true} />;
     });
   }
 
   return (
-    <section>
-      <h1>My Favorites</h1>
+    <section className="columns is-multiline">
+      <p
+        className="title column is-full"
+        style={{ color: "black", marginLeft: "5%" }}
+      >
+        My Favorites
+      </p>
       {content}
     </section>
   );
