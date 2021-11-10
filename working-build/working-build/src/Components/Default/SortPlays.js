@@ -11,6 +11,7 @@ const SortPlays = (props) => {
   const [howToSort, setHowToSort] = React.useState("title");
   const [filter, setFilter] = React.useState([]);
 
+  // 
   const sortChange = (event) =>{
     if (event.target.value === "title") {
       setHowToSort("title");
@@ -21,6 +22,7 @@ const SortPlays = (props) => {
     }
   }
 
+  // Sort array list by play title
   const sortByTitle = () => {
     console.log("sort by title");
     console.log(props.plays);
@@ -30,6 +32,7 @@ const SortPlays = (props) => {
     list = titleSort;
   }
 
+  // Sorts array list by play likely release date
   const SortByDate = () => {
     console.log("sort by date");
     console.log(props.plays);
@@ -39,6 +42,7 @@ const SortPlays = (props) => {
     list = dateSort;
   }
 
+  // Sorts array list by play genre
   const sortByGenre = () => {
     console.log("sort by genre");
     console.log(props.plays);
@@ -48,6 +52,7 @@ const SortPlays = (props) => {
     list = genreSort;
   }
 
+  // Filters array list based by years 
   const handleYearChange = (event) => {
     console.log("Year changed...");
     console.log(event.target.value);
@@ -98,6 +103,7 @@ const SortPlays = (props) => {
     // return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
   }
 
+  // 
   const filterYearChange = () => {
     if (yearCond === "between") {
       console.log("filterYearChange; between...");
@@ -150,12 +156,6 @@ const SortPlays = (props) => {
     } else {
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     }
-  }
-
-  function genList2() {
-    console.log("genList2: ");
-    console.log(tempList);
-    return tempList.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
   }
 
     return (
