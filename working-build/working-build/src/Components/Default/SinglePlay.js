@@ -3,12 +3,16 @@ import { useContext } from "react";
 import FavoritesContext from "../../store/favorites-context";
 import PlayDetailsMain from "../Details/PlayDetailsMain";
 
+/**
+* Toggles favourites, add item to favourites list
+*/
 const SinglePlay = (props) => {
   const [viewDetails, setviewDetails] = React.useState(false);
   const [viewSingle, setViewSingle] = React.useState(true);
   const favContext = useContext(FavoritesContext);
   const playIsFav = favContext.playIsFavorite(props.single.id);
 
+  // Add/Remove plays to favourites list
   function toggleFavoriteStatus() {
     if (playIsFav) {
       favContext.deleteFavorite(props.single.id);
@@ -17,6 +21,7 @@ const SinglePlay = (props) => {
     }
   }
 
+  // 
   function handleViewClick(event) {
     setViewSingle(false);
     setviewDetails(true);

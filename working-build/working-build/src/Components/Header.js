@@ -5,6 +5,9 @@ import "react-slide-out/lib/index.css";
 import { render } from "react-dom";
 import FavoritesBar from "./FavoritesBar";
 
+/**
+* Header bar
+*/
 class Header extends React.Component {
   constructor(props) {
     super(props);

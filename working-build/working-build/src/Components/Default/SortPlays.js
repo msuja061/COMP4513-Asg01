@@ -2,6 +2,10 @@ import DefaultView from "./DefaultView";
 import ListOfPlays from "./ListOfPlays";
 import React from "react";
 
+/**
+* Sorts array by title, date of release, and genre in ascending order
+* Filters array by a year range
+*/
 const SortPlays = (props) => {
   let list = props.plays;
   let tempList = props.plays;
@@ -11,7 +15,12 @@ const SortPlays = (props) => {
   const [howToSort, setHowToSort] = React.useState("title");
   const [filter, setFilter] = React.useState([]);
 
+<<<<<<< HEAD
   const sortChange = (event) => {
+=======
+  // 
+  const sortChange = (event) =>{
+>>>>>>> 777bb8c4d222ca5d00e88ca1a3ea48f65802c4ef
     if (event.target.value === "title") {
       setHowToSort("title");
     } else if (event.target.value === "year") {
@@ -21,6 +30,7 @@ const SortPlays = (props) => {
     }
   };
 
+  // Sort array list by play title
   const sortByTitle = () => {
     console.log("sort by title");
     console.log(props.plays);
@@ -30,6 +40,7 @@ const SortPlays = (props) => {
     list = titleSort;
   };
 
+  // Sorts array list by play likely release date
   const SortByDate = () => {
     console.log("sort by date");
     console.log(props.plays);
@@ -41,6 +52,7 @@ const SortPlays = (props) => {
     list = dateSort;
   };
 
+  // Sorts array list by play genre
   const sortByGenre = () => {
     console.log("sort by genre");
     console.log(props.plays);
@@ -50,6 +62,7 @@ const SortPlays = (props) => {
     list = genreSort;
   };
 
+  // Filters array list based by years 
   const handleYearChange = (event) => {
     console.log("Year changed...");
     console.log(event.target.value);
@@ -97,6 +110,7 @@ const SortPlays = (props) => {
     // return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
   };
 
+  // Determines if years inputted is a ranged input or for years raning before/after
   const filterYearChange = () => {
     if (yearCond === "between") {
       console.log("filterYearChange; between...");
@@ -180,6 +194,7 @@ const SortPlays = (props) => {
     }
   }
 
+<<<<<<< HEAD
   function genList2() {
     console.log("genList2: ");
     console.log(tempList);
@@ -235,4 +250,32 @@ const SortPlays = (props) => {
     </section>
   );
 };
+=======
+    return (
+      <section>
+        <label>
+          Sort by:
+          <form onChange={sortChange}>
+            <select>
+              <option value="select">Select</option>
+              <option value="title">Title</option>
+              <option value="year">Year</option>
+              <option value="genre">Genre</option>
+            </select>
+          </form>
+        </label>
+         <label>
+           Filter by years:
+           <form onChange={handleYearChange}>
+             <input type="text" name="start" value={props.filter} placeholder="Starting Date" />
+             <input type="text" name="end" value={props.filter} placeholder="Ending Date" />
+          </form>
+        </label>
+        <ul>
+          {genList()}
+        </ul>
+      </section>
+    );
+}
+>>>>>>> 777bb8c4d222ca5d00e88ca1a3ea48f65802c4ef
 export default SortPlays;

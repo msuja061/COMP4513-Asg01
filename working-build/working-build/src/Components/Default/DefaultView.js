@@ -5,6 +5,10 @@ import SortPlays from "./SortPlays";
 import ListOfPlays from "./ListOfPlays";
 import PlayDetailsMain from "../Details/PlayDetailsMain";
 
+/**
+* The main View page
+* Return location for other View components
+*/
 function DefaultView(props) {
   /**
   const favContext = useContext(FavoritesContext);

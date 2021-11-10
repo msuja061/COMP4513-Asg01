@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+* Prints out individual Shakespeare scenes
+*/
 const TextFilterScenes = (props) => {
 
   return (

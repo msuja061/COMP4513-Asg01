@@ -1,5 +1,8 @@
 // import { render } from "react-dom";
 
+/**
+* Details information page generator
+*/
 const PlayDetails = (props) => {
   return (
     <div>
