@@ -2,6 +2,10 @@ import DefaultView from "./DefaultView";
 import ListOfPlays from "./ListOfPlays";
 import React from "react";
 
+/**
+* Sorts array by title, date of release, and genre in ascending order
+* Filters array by a year range
+*/
 const SortPlays = (props) => {
   let list = props.plays;
   let tempList = props.plays;
