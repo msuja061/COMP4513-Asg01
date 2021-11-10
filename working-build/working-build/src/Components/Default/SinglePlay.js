@@ -4,7 +4,7 @@ import FavoritesContext from "../../store/favorites-context";
 import PlayDetailsMain from "../Details/PlayDetailsMain";
 
 /**
-* 
+* Toggles favourites, add item to favourites list
 */
 const SinglePlay = (props) => {
   const [viewDetails, setviewDetails] = React.useState(false);
