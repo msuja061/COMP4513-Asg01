@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PlayDetails from "./PlayDetails";
 import PlayCharacters from "./PlayCharacters";
 import PlayText from "./PlayText";
@@ -9,39 +9,46 @@ const PlayDetailsMain = (props) => {
   //Testing vars. Change when view play is set up
   console.log("Play passed into detail!");
   console.log(props.playClicked);
-  // const testPlays = JSON.parse(localStorage.getItem("plays"));
-  // const testPlay = props.thePlay;
-  let playDetails;
-  let localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
+  // let playDetails;
+  // let localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
+  const [playDetails, setPlayDetails] = React.useState(null);
 
-  if (localPlaysDetails.some((play) => play.id === props.playClicked.id)) {
+useEffect(() => {
+    let localPlaysDetails;
+
+    if (localStorage.getItem("playsDetails") !== null) {
+      localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
+    }
+    
+    if (props.playClicked.filename !== "") {
+      //If not checks if the play does have additional details
+      fetch(
+        "https://www.randyconnolly.com//funwebdev/3rd/api/shakespeare/play.php?name=" + props.playClicked.id
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            console.log (result);
+            localStorage.setItem("playsDetails", JSON.stringify(result));
+            setPlayDetails(result);
+          },
+          (error) => {
+            alert("Error fetching data");
+          }
+        );
+    } else if (localPlaysDetails.some((play) => play.id === props.playClicked.id)) {
     //Checks if play's details are already in local storage
     console.log("Already in local storage!");
-    playDetails = localPlaysDetails.find(
-      (play) => play.id === props.playClicked.id
-    );
-  } else if (props.playClicked.filename !== "") {
-    //If not checks if the play does have additional details
-    fetch(
-      "https://www.randyconnolly.com//funwebdev/3rd/api/shakespeare/play.php?name=" + props.playClicked.id
-    )
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          let testResult = JSON.stringify(result);
-          localStorage.setItem("playsDetails", testResult);
-        },
-        (error) => {
-          alert("Error fetching data");
-        }
-      );
-      localPlaysDetails = [JSON.parse(localStorage.getItem("playsDetails"))];
-      playDetails = localPlaysDetails.find(
-        (play) => play.id === props.playClicked.id
-      );
+    setPlayDetails(localPlaysDetails.some((play) => play.id === props.playClicked.id));
   } else {
     console.log("Play does not contain characters and text!"); //Add error handler for clickign characters or text!!!!!!
   }
+
+  }, [])
+  
+  useEffect(() => {
+    
+  }, [playDetails])
 
   const [detailsToShow, setDetailsToShow] = React.useState("details");
 
