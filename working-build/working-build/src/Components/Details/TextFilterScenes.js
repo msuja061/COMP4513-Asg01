@@ -1,6 +1,6 @@
 import React from "react";
 
-const PlaySwitchBoard = (props) => {
+const TextFilterScenes = (props) => {
 
   return (
     <select id="sceneList">
@@ -10,4 +10,4 @@ const PlaySwitchBoard = (props) => {
 
 }
 
-export default PlaySwitchBoard;
+export default TextFilterScenes;

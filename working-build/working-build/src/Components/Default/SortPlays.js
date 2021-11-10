@@ -130,10 +130,10 @@ const SortPlays = (props) => {
     if (howToSort === "title") {
       sortByTitle();
       // filterByTitle();
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     } else if (howToSort === "year") {
       SortByDate();
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     } else if (howToSort === "genre") {
       sortByGenre();
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
@@ -145,9 +145,10 @@ const SortPlays = (props) => {
       return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
     } else if (howToSort === "before") {
       filterYearChange();
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
+
     } else {
-      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} />);
+      return list.map( (plays) => <ListOfPlays aPlay={plays} key={plays.id} showDetail={props.showDetail}/>);
     }
   }
 
