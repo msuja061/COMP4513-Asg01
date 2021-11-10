@@ -28,7 +28,5 @@ function DefaultView(props) {
 }
 export default DefaultView;
 
-{
-  /* <button>Title</button>
-      <button>Year</button> */
-}
+{/* <button>Title</button>
+      <button>Year</button> */}

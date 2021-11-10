@@ -20,7 +20,7 @@ class Home extends React.Component {
     return (
       <div className="homePage">
         <img
-          src="https://unsplash.com/photos/3ZUsNJhi_Ik?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"
+          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
           alt="hero"
         />
 
