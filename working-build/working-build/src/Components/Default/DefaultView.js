@@ -5,6 +5,10 @@ import SortPlays from "./SortPlays";
 import ListOfPlays from "./ListOfPlays";
 import PlayDetailsMain from "../Details/PlayDetailsMain";
 
+/**
+* The main View page
+* Return location for other View components
+*/
 function DefaultView(props) {
   /**
   const favContext = useContext(FavoritesContext);
@@ -28,7 +32,5 @@ function DefaultView(props) {
 }
 export default DefaultView;
 
-{
-  /* <button>Title</button>
-      <button>Year</button> */
-}
+{/* <button>Title</button>
+      <button>Year</button> */}

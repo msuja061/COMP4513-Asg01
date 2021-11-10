@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+/**
+ * The main starting page - home - for the application
+ */
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -18,26 +22,49 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="homePage">
+      <div>
         <img
-          src="https://unsplash.com/photos/3ZUsNJhi_Ik?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"
+          className="hero"
+          src="https://i.pinimg.com/originals/26/b6/14/26b61432fcd570e451e21fc46c17242b.jpg"
           alt="hero"
+          style={{ height: "auto", zIndex: "-1" }}
         />
-
-        <label>
-          Title
-          <input
-            type="text"
-            name="title"
-            onChange={this.handleChange.bind(this)}
-          />
-          <Link to="/singlePlay">
-            <input type="button" value="Find this Play" />
+        <div
+          className="block"
+          style={{
+            marginTop: "-25%",
+            marginLeft: "25%",
+            width: "50%",
+            border: "3px solid green",
+            padding: "10px",
+            borderRadius: "1em",
+            zIndex: "0",
+          }}
+        >
+          <label>
+            Title
+            <input
+              className="input is-primary"
+              type="text"
+              name="title"
+              onChange={this.handleChange.bind(this)}
+            />
+            <Link to="/singlePlay">
+              <input
+                className="input is-primary"
+                type="button"
+                value="Find this Play"
+              />
+            </Link>
+          </label>
+          <Link to="/default">
+            <input
+              className="input is-primary"
+              type="submit"
+              value="Show me all plays"
+            />
           </Link>
-        </label>
-        <Link to="/default">
-          <input type="submit" value="Show me all plays" />
-        </Link>
+        </div>
       </div>
     );
   }
