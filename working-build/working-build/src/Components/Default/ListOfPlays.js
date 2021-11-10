@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import FavoritesContext from "../../store/favorites-context";
 import PlayDetailsMain from "../Details/PlayDetailsMain";
 
+/**
+* Favourites handler; adds/removes favourites indicator to item
+* Expands View Information for item
+*/
 const ListOfPlays = (props) => {
   const [viewDetails, setviewDetails] = React.useState(false);
 
