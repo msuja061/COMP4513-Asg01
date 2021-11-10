@@ -3,6 +3,9 @@ import { useContext } from "react";
 import FavoritesContext from "../../store/favorites-context";
 import PlayDetailsMain from "../Details/PlayDetailsMain";
 
+/**
+* 
+*/
 const SinglePlay = (props) => {
   const [viewDetails, setviewDetails] = React.useState(false);
   const [viewSingle, setViewSingle] = React.useState(true);
